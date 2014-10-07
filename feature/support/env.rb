@@ -51,6 +51,17 @@ end
 #   end
 #
 
+# Before do
+#   ActiveRecord::Fixtures.reset_cache
+#   fixtures_folder = File.join(Rails.root, 'test', 'fixtures')
+#   fixtures = Dir[File.join(fixtures_folder, '*.yml')].map {|f| File.basename(f, '.yml') }+
+#   ActiveRecord::Fixtures.create_fixtures(fixtures_folder, fixtures)
+# end
+
+Before('@javascript') do
+	Capybara.javascript_driver = :selenium
+end 
+
 # Possible values are :truncation and :transaction
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
